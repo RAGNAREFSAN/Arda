@@ -8,46 +8,46 @@ exports.run = async(client, message, args) => {
 if(args[0] === "sıfırla") {
 const sıfırlandı = new discord.MessageEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)  
-.setTitle(`${client.user.username} - Alınacak Rolü Sıfırla `)
+.setTitle(`${client.user.username} - Kayıtçı Rol Sıfırla `)
 .setColor('BLACK')
-.setDescription(`Kayıt Olunca Otomatik Alınacak Rol Sıfırlandı ! `)
+.setDescription(`Sunucu İçin Ayarladığınız Kayıtçı Rol Başarıyla Sıfırlandı ! `)
 .setThumbnail(client.user.avatarURL)
 .setFooter(`Komut ${message.author.tag} Tarafından Kullanıldı ! `)
 message.channel.send(sıfırlandı)
-db.delete(`alınacakrol_${message.guild.id}`)
+db.delete(`kayıtçırol_${message.guild.id}`)
 return;
 }
 
 let rol = message.mentions.roles.first();   
 if (!rol) {
-  const codedark = new discord.MessageEmbed()
+  const ayarlanmadı = new discord.MessageEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)  
-.setTitle(`${client.user.username} - Alınacak Roal Ayarla `)
+.setTitle(`${client.user.username} - Kayıtçı Rol Ayarla `)
 .setColor('BLACK')
-.setDescription(`Kayıt Olunca Alınacak Rolü Belirtiniz ! `)
+.setDescription(`Ayarlayacağınız Kayıtçı Rolü Belirtiniz ! `)
 .setThumbnail(client.user.avatarURL)
 .setFooter(`Komut ${message.author.tag} Tarafından Kullanıldı ! `)
-message.channel.send(codedark)
+message.channel.send(ayarlanmadı)
 }
-db.set(`alınacakrol_${message.guild.id}`, rol.id)
-const dcode = new discord.MessageEmbed()
+db.set(`kayıtçırol_${message.guild.id}`, rol.id)
+const ayarlandı = new discord.MessageEmbed()
 .setAuthor(client.user.username, client.user.avatarURL)  
-.setTitle(`${client.user.username} - Alınacak Rol Ayarlandı `)
+.setTitle(`${client.user.username} - Kayıtçı Rol Ayarlandı `)
 .setColor('BLACK')
-.setDescription(`Kayıt Olunca Otomatik Alınacak Rol Başarıyla ${rol} Olarak Ayarlandı ! `)
+.setDescription(`Kayıt Edecek Rol Başarıyla ${rol} Olarak Ayarlandı ! `)
 .setThumbnail(client.user.avatarURL)
 .setFooter(`Komut ${message.author.tag} Tarafından Kullanıldı ! `)
-message.channel.send(dcode)
+message.channel.send(ayarlandı)
   
 }
 exports.conf = {
   enabled: true,
   guildonly: false,
-  aliases: ['alınacakrol', 'arol', 'a-rol'],
+  aliases: ['kayıtçırol', 'kayıtçı'],
   permlevel: 0
 }
 exports.help = {
-  name: 'alınacak-rol',
-  description: 'Kayıt Olunca Alınacak Rolü Ayarlar',
-  usage: '!alınacak-rol @rol'
+  name: 'kayıtçı-rol',
+  description: 'kız rolünü ayarlar',
+  usage: '!kız-rol @rol'
 }
