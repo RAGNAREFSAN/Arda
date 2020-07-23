@@ -10,3 +10,5 @@
 
 
 **Yazan** : **!єנ∂єя'тєαм'ᘻᑘᕼᗩᘻᘻᘿᖶ**
+
+**[Darkcode Sunucusu](https://discord.gg/f2VrDkR)**
