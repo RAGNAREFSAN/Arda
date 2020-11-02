@@ -17,9 +17,7 @@ module.exports = client => {
   );
   client.user.setStatus("online");
   var oyun = [
-    "DARK CODE",
-    "KAYIT",
-    "ALTYAPISI"
+    "STG V12 REG",
 
   ];
 

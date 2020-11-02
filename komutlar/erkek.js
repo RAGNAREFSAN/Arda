@@ -1,48 +1,46 @@
-const discord = require('discord.js')
+const Discord = require('discord.js')
 const db = require('quick.db')
 
-exports.run = async(client, message, args) => {
+exports.run = async (client, message, args) => {
 
-let kanal = db.fetch(`kayıtkanal_${message.guild.id}`)
-let alınacakrol = db.fetch(`alınacakrol_${message.guild.id}`)
-let erkekrol = db.fetch(`erkekrol_${message.guild.id}`)
-let kayıtçı = db.fetch(`kayıtçırol_${message.guild.id}`)
-let kayıtsayı = db.fetch(`kayıtsayı_${message.author.id}`)
+ if(!['', '', ''].some(role => message.member.roles.cache.get(role)) && !message.member.hasPermission('ADMINISTRATOR')) return message.reply 
+
+let tag = "STG"
+const kayıtlı = message.guild.roles.cache.find(r => r.id === "ROL ID")
+const kayıtsız = message.guild.roles.cache.find(r => r.id === "ROL ID")
+const log = message.guild.channels.cache.find(c => c.id === "KANAL ID")
+
+const isim = args[1];
+if(!isim) return message.reply('Bir İsim Belirt.')
+const yas = args[2];
+if(!yas) return message.reply('Bir Yaş Belirt.')
+
+
+
+const member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.author);
+if(!member) return message.reply('Birini Etiketlemelisin.')
+if(!member.roles.highest.position >= message.member.roles.highest.position) return message.reply('Üst Pozisyonda Bir Kullanıcıyı Kayıt Edemezsiniz.');
   
-if(!message.member.roles.cache.has(kayıtçı)) return message.channel.send(`Bu Komudu Kullanabilmen İçin <@&${kayıtçı}> Adlı Role Sahip olman Lazım ! `)
-if(message.channel.id !== kanal) return message.channel.send(`Bu Komudu Sadece <#${kanal}> Adlı Kanalda Kullanabilirsin ! `)
-if (!erkekrol) return message.channel.send(`Sunucuda Erkek Rolü Ayarlanmadığı İçin Komut Kullanılamaz ! `)
-
-let member = message.mentions.members.first();
-if (!member) return message.channel.send(`Erkek Olarak Kayıt Edeceğin Kullanıcıyı Belirtmelisin ! `)
-let isim = args[1]
-if (!isim) return message.channel.send(`İsmini Belirtmelisin ! `)
-let yaş = args[2]
-if (!yaş) return message.channel.send(`Yaşını Belirtmelisin ! `)
-member.setNickname(`${isim} | ${yaş}`)
-member.roles.remove(alınacakrol)
-member.roles.add(erkekrol)
-
-const darkcode = new discord.MessageEmbed()
-.setAuthor(client.user.username, client.user.avatarURL)  
-.setTitle(`${client.user.username} - Erkek `)
+  
+member.setNickname(`${tag} ${isim} | ${yas}`)
+member.roles.add(kayıtlı)
+member.roles.remove(kayıtsız) 
+  
+const tamamlandi = new Discord.MessageEmbed()
+.setAuthor(member.user.username, member.user.avatarURL({ dynamic: true }))
+.setDescription(`<@${member.user.id}> Aramıza Hoş Geldin.
+<@${member.user.id}> Adlı Kullanıcıya <@&${kayıtlı.id}> Rolünü Verdim
+<@${member.user.id}> Adlı Kullanıcının İsmini \`${tag} ${isim} | ${yas}\` Olarak Güncelledim`)  
 .setColor('BLACK')
-.setDescription(`Erkek Olarak Kayıt Edilen Kullanıcı: ${member} \n Erkek Olarak Kayıt Eden Yetkili: <@!${message.author.id}> \n Erkek Olarak Kayıt Eden Kullanıcının Kayıt Sayısı: **${kayıtsayı ? `${kayıtsayı}` : "0"}**`)
-.addField(`Kullanıcının İsmi;`, `${isim}`, true)
-.addField(`Kullanıcının Yaşı;`, `${yaş}`, true)
-.setThumbnail(member.avatarURL)
-.setFooter(`Komut ${message.author.tag} Tarafından Kullanıldı ! `)
-message.channel.send(darkcode)
-db.add(`kayıtsayı_${message.author.id}`, 1)
+.setFooter(`Striga #Code`)
+log.send(tamamlandi)
+  
 }
+
 exports.conf = {
-  enabled: true,
-  guildonly: false,
-  aliases: ['e'],
-  permlevel: 0
+    enabled: true,
+    guildOnly: true,
+    aliases: ['erkek', 'e', 'boy', 'man'],
+    name: 'erkek'
 }
-exports.help = {
-  name: 'erkek',
-  description: 'erkek olarak kayıt eder',
-  usage: '!erkek @kullanıcı isim yaş'
-}
+  

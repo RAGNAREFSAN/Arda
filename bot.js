@@ -1,43 +1,42 @@
-const Discord = require('discord.js');//DarkCode
-const client = new Discord.Client();//DarkCode
-const ayarlar = require('./ayarlar.json');//DarkCode
-const chalk = require('chalk');//DarkCode
-const moment = require('moment');//DarkCode
-var Jimp = require('jimp');//DarkCode
-const { Client, Util } = require('discord.js');//DarkCode
-const fs = require('fs');//DarkCode
-const db = require('quick.db');//DarkCode
-const http = require('http');//DarkCode
-const express = require('express');//DarkCode
-require('./util/eventLoader.js')(client);//DarkCode
-const path = require('path');//DarkCode
-const snekfetch = require('snekfetch');//DarkCode
-//DarkCode
+const Discord = require('discord.js');//
+const client = new Discord.Client();//
+const ayarlar = require('./ayarlar.json');//
+const chalk = require('chalk');//
+const moment = require('moment');//
+var Jimp = require('jimp');//
+const { Client, Util } = require('discord.js');//
+const fs = require('fs');//
+const db = require('quick.db');//
+const express = require('express');//
+require('./util/eventLoader.js')(client);//
+const path = require('path');//
+const snekfetch = require('snekfetch');//
+//
 
-var prefix = ayarlar.prefix;//DarkCode
-//DarkCode
-const log = message => {//DarkCode
-    console.log(`${message}`);//DarkCode
+var prefix = ayarlar.prefix;//
+//
+const log = message => {//
+    console.log(`${message}`);//
 };
 
-client.commands = new Discord.Collection();//DarkCode
-client.aliases = new Discord.Collection();//DarkCode
-fs.readdir('./komutlar/', (err, files) => {//DarkCode
-    if (err) console.error(err);//DarkCode
-    log(`${files.length} komut yüklenecek.`);//DarkCode
-    files.forEach(f => {//DarkCode
-        let props = require(`./komutlar/${f}`);//DarkCode
-        log(`Yüklenen komut: ${props.help.name}.`);//DarkCode
-        client.commands.set(props.help.name, props);//DarkCode
-        props.conf.aliases.forEach(alias => {//DarkCode
-            client.aliases.set(alias, props.help.name);//DarkCode
+client.commands = new Discord.Collection();//
+client.aliases = new Discord.Collection();//
+fs.readdir('./komutlar/', (err, files) => {//
+    if (err) console.error(err);//
+    log(`${files.length} komut yüklenecek.`);//
+    files.forEach(f => {//
+        let props = require(`./komutlar/${f}`);//
+        log(`Yüklenen komut: ${props.help.name}.`);//
+        client.commands.set(props.help.name, props);//
+        props.conf.aliases.forEach(alias => {//
+            client.aliases.set(alias, props.help.name);//
         });
     });
 });
 
 
 
-//DarkCode
+
 client.reload = command => {
     return new Promise((resolve, reject) => {
         try {
@@ -74,7 +73,6 @@ client.load = command => {
 };
 
 
-//DarkCode
 
 client.unload = command => {
     return new Promise((resolve, reject) => {
@@ -91,31 +89,28 @@ client.unload = command => {
         }
     });
 };
-//DarkCode
+
 client.elevation = message => {
     if (!message.guild) {
         return;
     }
-  //DarkCode
+
     let permlvl = 0;
     if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
     if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
     if (message.author.id === ayarlar.sahip) permlvl = 4;
     return permlvl;
 };
-//DarkCode
+
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 // client.on('debug', e => {
 //   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
 // });
-//DarkCode
 client.on('warn', e => {
     console.log(chalk.bgYellow(e.replace(regToken, 'that was redacted')));
 });
-//DarkCode
 client.on('error', e => {
     console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
 });
-//DarkCode
+
 client.login(ayarlar.token);
-//DarkCode
