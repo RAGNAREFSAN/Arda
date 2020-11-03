@@ -124,38 +124,24 @@ client.on("guildMemberAdd", member => {
 //-----------------------GİRENE-ROL-VERME----------------------\\     STG
 
 
-//----------------------------------HOSGELDIN-----------------------------//
+// Hoş Geldin Mesajı
 
-client.on('guildMemberAdd', member => {
-    let stgmamy = member.user.id
-var kurulus = moment(member.user.createdAt).add(7, 'days').fromNow()
-
-
-
-var kontrol;
-if (kurulus < 1296000000) kontrol = '**__Bu Hesap Güvenilir Değil__**'
-if (kurulus > 1296000000) kontrol = '**__Bu Hesap Güvenilir Gözüküyor__**'
-  moment.locale("tr");
-
-    const logChannel = member.guild.channels.cache.find(channel => channel.id === "772228722572001300");
-    member.guild.fetchInvites().then(guildInvites => {
-      let embed3 = new Discord.MessageEmbed()
-                     .setAuthor(member.guild.name)
-                     .setDescription(`Selam <@${member.user.id}> Sunucumuza Hoş Geldin Seninle Birlikte \`${member.guild.memberCount}\` Kişi Olduk ! 
-                     
-                     Kayıt Olmak İçin Ses Odalarından Birisine Geçip Teyit Vermen Yeterli ! 
-                     
-                     Seninle <@&757925031241187349> Bu Roldeki Yetkililer İlgilenecektir. 
-                     
-                     Hesabını Oluşturma Tarihin: `+ moment(member.createdAt).format('DD MMMM YYYY HH:mm  \`M [ay], D [gün], H [saat], m [dakika], s [saniye]\`')
-                       +` Önce Oluşturmuşsun  
-
-                     Hesabının Güvenlik Durumu: `+ kontrol +`
-                     
-                     Bize Destek Olmak İçin \` ✯ \` Tagımızı Alabilirsin.`)
-                     .setColor('0x1f1d1d')
-                     .setFooter(client.user.username, client.iconUR)
-                     client.channels.cache.get("772228722572001300").send(`Merhabalar <@${member.user.id}> Hoş Geldin.`)
-                     client.channels.cache.get("772228722572001300").send(embed3)})
-                    });;
-//----------------------------------HOSGELDIN-----------------------------//
+client.on("guildMemberAdd", member => {  
+    const kanal = member.guild.channels.cache.find(r => r.id === "772228722572001300");
+    const register = "<@&744613786237010031>"
+    let user = client.users.cache.get(member.id);
+    require("moment-duration-format");
+      const kurulus = new Date().getTime() - user.createdAt.getTime();  
+   
+    var kontrol;
+  if (kurulus < 1296000000) kontrol = 'Hesap Durumu: Güvenilir Değil'
+  if (kurulus > 1296000000) kontrol = 'Hesap Durumu: Güvenilir Gözüküyor'
+    moment.locale("tr");
+      const strigalog = new Discord.MessageEmbed()
+      .setAuthor(member.guild.name)
+  .setDescription("**<a:space:773077533495001108> Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n<a:prizma:773077138965266443> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n<a:yildiz:773077160733704203> <@&744613786237010031> seninle ilgilenicektir. \n<a:alev:773077129259909171> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n<a:kilit:773077152986955806> "  + kontrol + "\n<a:kelebek:773077162948296775> Tagımızı alarak ` 仒 ` bize destek olabilirsin.\n")
+   kanal.send(strigalog)   
+   kanal.send(register) 
+  });
+  
+  // Hoş Geldin Mesajı
