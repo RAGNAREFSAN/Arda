@@ -14,20 +14,22 @@ if(!kayıtsız) return message.reply('Kayıtsız Rolü Ayarlanmamış.')
   
 let member = message.mentions.users.first() || client.users.cache.get(args.join(' '))
 if(!member) return message.channel.send('Kimi Kayıt Etmem Gerekiyor ?')
+let stg = message.guild.member(member)
 let isim = args[1]
 let yas = args[2]
 if(!isim) return message.reply('')
 if(!yas) return message.reply('')
 
-member.setNickname(`${tag} ${isim} | ${yas}`)  
-member.roles.add(kayıtlı)
-member.roles.remove(kayıtsız)
+stg.setNickname(`${tag} ${isim} | ${yas}`)  
+stg.roles.add(kayıtlı)
+stg.roles.remove(kayıtsız)
 
 const embed = new Discord.MessageEmbed()
-.setAuthor(`Kayıt İşlemi Tamamlandı`)
-.setDescription(`<@${member.user.id}> Aramıza Hoş Geldin.
-<@${member.user.id}> Adlı Kullanıcıya <@&${kayıtlı.id}> Rolünü Verdim
-<@${member.user.id}> Adlı Kullanıcının İsmini \`${tag} ${isim} | ${yas}\` Olarak Güncelledim`) 
+.setTitle(`Kayıt İşlemi Tamamlandı`)
+    .addField(`Kayıt Eden`, `<@${message.author.id}>`) 
+    .addField(`Verilen Rol`, `<@&${kayıtlı.id}>`) 
+    .addField(`Alınan Rol`, `<@&${kayıtsız.id}>`)
+    .addField(`Yeni İsmin`, `\`${tag} | ${isim} | ${yas}\``) 
 .setFooter(`Striga #Code`)
 .setColor('0x964396')
 client.channels.cache.get('772228722572001300').send(embed)
