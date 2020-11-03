@@ -19,7 +19,9 @@
     "jimp": "^0.16.1",
     "fs": "^0.0.2",
     "snekfetch": "^4.0.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "node-superfetch": "^0.1.10",
+    "crypto": "^1.0.1"
   },
   "engines": {
     "node": "12.x"
