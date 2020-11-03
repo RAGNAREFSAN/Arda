@@ -124,46 +124,38 @@ client.on("guildMemberAdd", member => {
 //-----------------------GİRENE-ROL-VERME----------------------\\     STG
 
 
-// Hoş Geldin Mesajı
+//----------------------------------HOSGELDIN-----------------------------//
 
-client.on('guildMemberAdd', (member, msg) => {
-  const moment = require('moment')
-	let günler = {
-      "0": "Pazar",
-      "1": "Pazartesi",
-      "2": "Salı",
-      "3": "Çarşamba",
-      "4": "Perşembe",
-      "5": "Cuma",
-      "6": "Cumartesi",
-	}
-	  let aylar = {
-			"01": "Ocak",
-			"02": "Şubat",
-			"03": "Mart",
-			"04": "Nisan",
-			"05": "Mayıs",
-			"06": "Haziran",
-			"07": "Temmuz",
-			"08": "Ağustos",
-			"09": "Eylül",
-			"10": "Ekim",
-			"11": "Kasım",
-			"12": "Aralık"
-    }
-  let endAt = member.user.createdAt
-      let gün = moment(new Date(endAt).toISOString()).format('DD')
-      let ay = moment(new Date(endAt).toISOString()).format('MM').replace("01", "Ocak").replace("02","Şubat").replace("03","Mart").replace("04", "Nisan").replace("05", "Mayıs").replace("06", "Haziran").replace("07", "Temmuz").replace("08", "Ağustos").replace("09", "Eylül").replace("10","Ekim").replace("11","Kasım").replace("12","Aralık")
-     let yıl =  moment(new Date(endAt).toISOString()).format('YYYY')
-     let saat = moment(new Date(endAt).toISOString()).format('HH:mm')
-let kuruluş = `${gün} ${ay} ${yıl} ${saat}`
-   // let kuruluş = moment(user.author.createdAt).format('YYYY-MM-DD HH:mm:ss')
-	//let kuruluş = user.createdAt.toDateString().replace("Sun","Pazar").replace("Mon","Pazartesi").replace("Tue","Salı").replace("Wed","Çarşamba").replace("Thu","Perşembe").replace("Fri","Cuma").replace("Sat","Cumartesi").replace("Jan","Ocak").replace("Feb","Şubat").replace("Mar","Mart").replace("Apr","Nisan").replace("May","Mayıs").replace("June","Haziran").replace("July","Temmuz").replace("Aug","Ağustos").replace("Sep","Eylül").replace("Oct","Ekim").replace("Nov","Kasım").replace("Dec","Aralık")   
-	let oskobs = new Discord.MessageEmbed()
-	.setColor("BLACK")
-    .setDescription(`** <@${member.id}> Aramıza Hoşgeldin Seninle Birlikte** \`${member.guild.memberCount}\` **Üyeye Ulaştık** \n**Sunucumuzda Kanalları Görebilmen İçin Kayıt Olman Gerekli Bunun İçin İse Yanda Bulunan Ses Kanallarına Girerek Kayıt Olabilirsin**\n<a:emojiisim:emojiid>  **<@&yetkilirolid> Adı Rolüne Sahip Kişiler Kayıt İşlemlerinle İlgilenecektir**\n**Hesap Kuruluş Tarihi :** \`${kuruluş}\``)
-.setImage("https://cdn.discordapp.com/attachments/756969726034313406/762304211446005770/giphy.gif")  
-client.channels.cache.get("772228722572001300").send(oskobs)//kanalid
-})
-  
-  // Hoş Geldin 
+client.on('guildMemberAdd', member => {
+    let stgmamy = member.user.id
+var kurulus = moment(member.user.createdAt).add(7, 'days').fromNow()
+
+
+
+var kontrol;
+if (kurulus < 1296000000) kontrol = '**__Bu Hesap Güvenilir Değil__**'
+if (kurulus > 1296000000) kontrol = '**__Bu Hesap Güvenilir Gözüküyor__**'
+  moment.locale("tr");
+
+    const logChannel = member.guild.channels.cache.find(channel => channel.id === "772228722572001300");
+    member.guild.fetchInvites().then(guildInvites => {
+      let embed3 = new Discord.MessageEmbed()
+                     .setAuthor(member.guild.name)
+                     .setDescription(`Selam <@${member.user.id}> Sunucumuza Hoş Geldin Seninle Birlikte \`${member.guild.memberCount}\` Kişi Olduk ! 
+                     
+                     Kayıt Olmak İçin Ses Odalarından Birisine Geçip Teyit Vermen Yeterli ! 
+                     
+                     Seninle <@&757925031241187349> Bu Roldeki Yetkililer İlgilenecektir. 
+                     
+                     Hesabını Oluşturma Tarihin: `+ moment(member.createdAt).format('DD MMMM YYYY HH:mm  \`M [ay], D [gün], H [saat], m [dakika], s [saniye]\`')
+                       +` Önce Oluşturmuşsun  
+
+                     Hesabının Güvenlik Durumu: `+ kontrol +`
+                     
+                     Bize Destek Olmak İçin \` ✯ \` Tagımızı Alabilirsin.`)
+                     .setColor('0x1f1d1d')
+                     .setFooter(client.user.username, client.iconUR)
+                     client.channels.cache.get("772228722572001300").send(`Merhabalar <@${member.user.id}> Hoş Geldin.`)
+                     client.channels.cache.get("772228722572001300").send(embed3)})
+                    });;
+//----------------------------------HOSGELDIN-----------------------------//
