@@ -114,3 +114,32 @@ client.on('error', e => {
 });
 
 client.login(ayarlar.token);
+
+//-----------------------GİRENE-ROL-VERME----------------------\\     STG
+
+client.on("guildMemberAdd", member => {
+  member.roles.add('771702458829373471'); // UNREGİSTER ROLÜNÜN İDSİNİ GİRİN
+});
+
+//-----------------------GİRENE-ROL-VERME----------------------\\     STG
+
+
+// Hoş Geldin Mesajı
+
+client.on("guildMemberAdd", member => {  
+  const register = "<@&757931254313254968>"  
+  const kanal = member.guild.channels.cache.find(r => r.id === "757939910287294474");
+    
+    let user = client.users.cache.get(member.id);
+    require("moment-duration-format");
+      const kurulus = new Date().getTime() - user.createdAt.getTime();  
+   
+    var kontrol;
+  if (kurulus < 1296000000) kontrol = 'Bu Hesap: Şüpheli <:no:770766428181626980>'
+  if (kurulus > 1296000000) kontrol = 'Bu Hesap: Güvenilir <:yes:770766428470509568>'
+    moment.locale("tr");
+  kanal.send("**Hoşgeldin! <@" + member + "> Seninle " + client.emojiSayi(`${member.guild.memberCount}`)
+  + " Kişiyiz  \n\n<a:loadingg:770769025495465995> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<a:stafffs:770769025626013697> <@&757931254313254968> seninle ilgilenicektir. \n\n<a:prismamam:770769026967404614> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("\`YYYY DD MMMM dddd\`") +  "\n\n<a:kilitttt:770769028271833119> " + kontrol + "\n\n<a:alev:770350831819685890> Tagımızı alarak ` ✯ ` bize destek olabilirsin. **\n")
+  });
+  
+  // Hoş Geldin 
