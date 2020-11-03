@@ -126,20 +126,44 @@ client.on("guildMemberAdd", member => {
 
 // Hoş Geldin Mesajı
 
-client.on("guildMemberAdd", member => {  
-  const register = "<@&757931254313254968>"  
-  const kanal = member.guild.channels.cache.find(r => r.id === "757939910287294474");
-    
-    let user = client.users.cache.get(member.id);
-    require("moment-duration-format");
-      const kurulus = new Date().getTime() - user.createdAt.getTime();  
-   
-    var kontrol;
-  if (kurulus < 1296000000) kontrol = 'Bu Hesap: Şüpheli <:no:770766428181626980>'
-  if (kurulus > 1296000000) kontrol = 'Bu Hesap: Güvenilir <:yes:770766428470509568>'
-    moment.locale("tr");
-  kanal.send("**Hoşgeldin! <@" + member + "> Seninle " + client.emojiSayi(`${member.guild.memberCount}`)
-  + " Kişiyiz  \n\n<a:loadingg:770769025495465995> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<a:stafffs:770769025626013697> <@&757931254313254968> seninle ilgilenicektir. \n\n<a:prismamam:770769026967404614> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("\`YYYY DD MMMM dddd\`") +  "\n\n<a:kilitttt:770769028271833119> " + kontrol + "\n\n<a:alev:770350831819685890> Tagımızı alarak ` ✯ ` bize destek olabilirsin. **\n")
-  });
+client.on('guildMemberAdd', (member, msg) => {
+  const moment = require('moment')
+	let günler = {
+      "0": "Pazar",
+      "1": "Pazartesi",
+      "2": "Salı",
+      "3": "Çarşamba",
+      "4": "Perşembe",
+      "5": "Cuma",
+      "6": "Cumartesi",
+	}
+	  let aylar = {
+			"01": "Ocak",
+			"02": "Şubat",
+			"03": "Mart",
+			"04": "Nisan",
+			"05": "Mayıs",
+			"06": "Haziran",
+			"07": "Temmuz",
+			"08": "Ağustos",
+			"09": "Eylül",
+			"10": "Ekim",
+			"11": "Kasım",
+			"12": "Aralık"
+    }
+  let endAt = member.user.createdAt
+      let gün = moment(new Date(endAt).toISOString()).format('DD')
+      let ay = moment(new Date(endAt).toISOString()).format('MM').replace("01", "Ocak").replace("02","Şubat").replace("03","Mart").replace("04", "Nisan").replace("05", "Mayıs").replace("06", "Haziran").replace("07", "Temmuz").replace("08", "Ağustos").replace("09", "Eylül").replace("10","Ekim").replace("11","Kasım").replace("12","Aralık")
+     let yıl =  moment(new Date(endAt).toISOString()).format('YYYY')
+     let saat = moment(new Date(endAt).toISOString()).format('HH:mm')
+let kuruluş = `${gün} ${ay} ${yıl} ${saat}`
+   // let kuruluş = moment(user.author.createdAt).format('YYYY-MM-DD HH:mm:ss')
+	//let kuruluş = user.createdAt.toDateString().replace("Sun","Pazar").replace("Mon","Pazartesi").replace("Tue","Salı").replace("Wed","Çarşamba").replace("Thu","Perşembe").replace("Fri","Cuma").replace("Sat","Cumartesi").replace("Jan","Ocak").replace("Feb","Şubat").replace("Mar","Mart").replace("Apr","Nisan").replace("May","Mayıs").replace("June","Haziran").replace("July","Temmuz").replace("Aug","Ağustos").replace("Sep","Eylül").replace("Oct","Ekim").replace("Nov","Kasım").replace("Dec","Aralık")   
+	let oskobs = new Discord.MessageEmbed()
+	.setColor("BLACK")
+    .setDescription(`** <@${member.id}> Aramıza Hoşgeldin Seninle Birlikte** \`${member.guild.memberCount}\` **Üyeye Ulaştık** \n**Sunucumuzda Kanalları Görebilmen İçin Kayıt Olman Gerekli Bunun İçin İse Yanda Bulunan Ses Kanallarına Girerek Kayıt Olabilirsin**\n<a:emojiisim:emojiid>  **<@&yetkilirolid> Adı Rolüne Sahip Kişiler Kayıt İşlemlerinle İlgilenecektir**\n**Hesap Kuruluş Tarihi :** \`${kuruluş}\``)
+.setImage("https://cdn.discordapp.com/attachments/756969726034313406/762304211446005770/giphy.gif")  
+client.channels.cache.get("772228722572001300").send(oskobs)//kanalid
+})
   
   // Hoş Geldin 
