@@ -118,17 +118,17 @@ client.login(ayarlar.token);
 //-----------------------GİRENE-ROL-VERME----------------------\\     STG
 
 client.on("guildMemberAdd", member => {
-  member.roles.add('771702458829373471'); // UNREGİSTER ROLÜNÜN İDSİNİ GİRİN
+  member.roles.add('UNREGISTER ID'); // UNREGİSTER ROLÜNÜN İDSİNİ GİRİN
 });
 
 //-----------------------GİRENE-ROL-VERME----------------------\\     STG
 
 
-// Hoş Geldin Mesajı
+//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
 
 client.on("guildMemberAdd", member => {  
-    const kanal = member.guild.channels.cache.find(r => r.id === "772228722572001300");
-    const register = "<@&771695296291668000>"
+    const kanal = member.guild.channels.cache.find(r => r.id === "KANAL ID");
+    const register = "<@&REGISTER YAPAN ROL ID>"
     let user = client.users.cache.get(member.id);
     require("moment-duration-format");
       const kurulus = new Date().getTime() - user.createdAt.getTime();  
@@ -139,10 +139,17 @@ client.on("guildMemberAdd", member => {
     moment.locale("tr");
       const strigalog = new Discord.MessageEmbed()
       .setAuthor(member.guild.name)
-  .setDescription("**<a:space:773077533495001108> Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n\n<a:prizma:773077138965266443> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<a:yildiz:773077160733704203> <@&771695296291668000> seninle ilgilenicektir. \n\n<a:alev:773077129259909171> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n\n<a:kilit:773077152986955806> "  + kontrol + "\n\n<a:kelebek:773077162948296775> Tagımızı alarak ` Ψ ` bize destek olabilirsin.**\n")
+  .setDescription("**Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n\nMüsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<@&771695296291668000> seninle ilgilenicektir. \n\nHesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n\n"  + kontrol + "\n\nTagımızı alarak ` STG ` bize destek olabilirsin.**\n")
    .setImage("https://i.pinimg.com/originals/2c/43/ac/2c43acd8c41ee853cf9fbb04960e4fa6.gif")
    kanal.send(strigalog)   
    kanal.send(register) 
   });
   
-  // Hoş Geldin Mesajı
+//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
+
+
+//-----------------------OTO-TAG-----------------------\\     STG
+
+
+
+//-----------------------OTO-TAG-----------------------\\     STG
