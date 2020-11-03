@@ -25,8 +25,8 @@ stg.roles.add(kayıtlı)
 stg.roles.remove(kayıtsız)
 
 db.add(`kayıtSayi.${message.author.id}`, 1)
-db.add(`erkekUye.${message.author.id}`, 1)
-let erkek = db.get(`erkekUye.${message.author.id}`);
+db.add(`kadinUye.${message.author.id}`, 1)
+let kadın = db.get(`kadinUye.${message.author.id}`);
 let kayıtlar = db.fetch(`kayıtSayi.${message.author.id}`); 
   
 const embed = new Discord.MessageEmbed()
@@ -46,10 +46,10 @@ client.channels.cache.get('KANAL ID').send(embed)
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ['erkek','e','man','boy'],
+    aliases: ['kadın','k','woman','girl', 'kız'],
     permLevel: 0
 };
 
 exports.help = {
-    name: 'erkek',
+    name: 'kadın',
 };
