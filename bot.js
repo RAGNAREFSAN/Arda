@@ -128,7 +128,7 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberAdd", member => {  
     const kanal = member.guild.channels.cache.find(r => r.id === "772228722572001300");
-    const register = "<@&744613786237010031>"
+    const register = "<@&771695296291668000>"
     let user = client.users.cache.get(member.id);
     require("moment-duration-format");
       const kurulus = new Date().getTime() - user.createdAt.getTime();  
@@ -139,7 +139,8 @@ client.on("guildMemberAdd", member => {
     moment.locale("tr");
       const strigalog = new Discord.MessageEmbed()
       .setAuthor(member.guild.name)
-  .setDescription("**<a:space:773077533495001108> Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n<a:prizma:773077138965266443> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n<a:yildiz:773077160733704203> <@&744613786237010031> seninle ilgilenicektir. \n<a:alev:773077129259909171> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n<a:kilit:773077152986955806> "  + kontrol + "\n<a:kelebek:773077162948296775> Tagımızı alarak ` 仒 ` bize destek olabilirsin.\n")
+  .setDescription("**<a:space:773077533495001108> Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n\n<a:prizma:773077138965266443> Müsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<a:yildiz:773077160733704203> <@&771695296291668000> seninle ilgilenicektir. \n\n<a:alev:773077129259909171> Hesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n\n<a:kilit:773077152986955806> "  + kontrol + "\n\n<a:kelebek:773077162948296775> Tagımızı alarak ` Ψ ` bize destek olabilirsin.**\n")
+   .setImage("https://i.pinimg.com/originals/2c/43/ac/2c43acd8c41ee853cf9fbb04960e4fa6.gif")
    kanal.send(strigalog)   
    kanal.send(register) 
   });
