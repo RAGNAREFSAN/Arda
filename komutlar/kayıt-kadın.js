@@ -17,8 +17,8 @@ if(!member) return message.channel.send('Kimi Kayıt Etmem Gerekiyor ?')
 let stg = message.guild.member(member)
 let isim = args[1]
 let yas = args[2]
-if(!isim) return message.reply('')
-if(!yas) return message.reply('')
+if(!isim) return message.reply('İsim Belirt.')
+if(!yas) return message.reply('Yaş Belirt.')
 
 stg.setNickname(`${tag} ${isim} | ${yas}`)  
 stg.roles.add(kayıtlı)
