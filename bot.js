@@ -142,7 +142,7 @@ client.on("guildMemberAdd", member => {
   .setDescription("**Hoşgeldin! <@" + member + "> Seninle \`" + member.guild.memberCount + "\` Kişiyiz.\n\nMüsait olduğunda Confirmed Odalarından Birine Geçip Kaydını Yaptırabilirsin. \n\n<@&771695296291668000> seninle ilgilenicektir. \n\nHesabın Oluşturulma Tarihi: " + moment(member.user.createdAt).format("`YYYY DD MMMM dddd`") +  "\n\n"  + kontrol + "\n\nTagımızı alarak ` STG ` bize destek olabilirsin.**\n")
    .setImage("https://i.pinimg.com/originals/2c/43/ac/2c43acd8c41ee853cf9fbb04960e4fa6.gif")
    kanal.send(strigalog)   
-   kanal.send(register) 
+     kanal.send(register) 
   });
   
 //-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
