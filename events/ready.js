@@ -15,7 +15,7 @@ module.exports = client => {
       client.user.username
     } ismi ile giriş yapıldı!`
   );
-  client.user.setStatus("online");
+  client.user.setStatus("invisible");
   var oyun = [
     "STG V12 REG",
 
