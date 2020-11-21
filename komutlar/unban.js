@@ -12,9 +12,7 @@ if(!unbanid) return message.reply("Banını kaldırmak istediğin kişinin id si
   
 message.guild.members.unban(unbanid)
 message.channel.send(`<@${unbanid}>, Adlı Kullanıcının Banı Kaldırıldı.`).then(msg => msg.delete(5000))
- 
 
-  
 const unban = new Discord.MessageEmbed()
 .setColor('BLACK')
 .setThumbnail(message.author.avatarURL())  

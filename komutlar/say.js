@@ -7,7 +7,7 @@ module.exports.run = (client, message, args) => {
 
 
   let tag = "TAG";
-  const booster = message.guild.roles.cache.get("779395402641309726").members.size
+  const booster = message.guild.roles.cache.get("BOOSTER ROL ID").members.size
   const online = message.guild.members.cache.filter(u => u.presence.status != "offline").size
   const ttag = message.guild.members.cache.filter(m => m.user.username.includes(tag)).size
   const toplam = message.guild.memberCount

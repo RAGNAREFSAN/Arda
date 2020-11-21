@@ -1,17 +1,17 @@
 {
-  "prefix" : ".",
-  "sahip" : "164843533201702922",
-  "token" : "NzQ1MjMzNjgyNjEyMzU1MTky.Xzuy8w.spaQo_quCCMBfR0UzoMbV9cU4DE",
+  "prefix" : "PREFIX",
+  "sahip" : "ID",
+  "token" : "TOKEN",
   
-  "BanYetkilisi": ["779395409687871530"],
-  "BanKanal": "779395206298468414",
+  "BanYetkilisi": ["ROL ID"],
+  "BanKanal": "KANAL ID",
   
-  "JailYetkilisi": ["77939540910971293"], 
-  "JailCezalıRol": "779395413047246879",
-  "JailKanal": "779395206298468414",
+  "JailYetkilisi": ["ROL ID"], 
+  "JailCezalıRol": "ROL ID",
+  "JailKanal": "KANAL ID",
   
-  "MuteYetkilisi": ["779395409327816714"],
-  "MuteliRol": "779395414742925342",
-  "MuteKanal": "779395206298468414"
+  "MuteYetkilisi": ["ROL ID"],
+  "MuteliRol": "ROL ID",
+  "MuteKanal": "KANAL ID"
   
 }
