@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const db = require('quick.db');
 exports.run = async(client, message, args) => {    
- if(!message.member.roles.cache.some(r => ["779395409867964426"].includes(r.id))) //
+ if(!message.member.roles.cache.some(r => ["ROL ID", "ROL ID"].includes(r.id))) //
     return message.reply("Bu Komutu Kullanmak İçin Yeterli Yetkin Bulunmamakta !")
   //------------------------------------------------KAYITLAR-----------------------------------------------\\    STG   
  let adam = message.mentions.users.first()
