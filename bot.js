@@ -116,7 +116,15 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-//-----------------------GİRENE-ROL-VERME----------------------\\     STG
+//--------------------------------------------------------------------------------------\\
+
+
+
+
+
+//--------------------------------------------------------------------------------------\\
+
+
 
 client.on("message" , async msg => {
   
@@ -151,67 +159,6 @@ client.on("message" , async msg => {
 
 //--------------------------------------------------------------------------------------\\
 
-client.on('messageDelete', message => {
-  const data = require("quick.db")
-  data.set(`snipe.mesaj.${message.guild.id}`, message.content)
-  data.set(`snipe.id.${message.guild.id}`, message.author.id)
-
-})
-
-//-----------------------------------------------REKLAM-ENGELLEME---------------------------------------------------------\\
-
-client.on("message", msg => {
- if(!db.has(`reklam_${msg.guild.id}`)) return;
-        const reklam = [".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl", ".org", ".com.tr", ".biz", "net", ".rf.gd", ".az", ".party", "discord.gg",];
-        if (reklam.some(word => msg.content.includes(word))) {
-          try {
-            if (!msg.member.hasPermission("ADMINISTRATOR")) {
-                  msg.delete();
-                    return msg.channel.send(new Discord.MessageEmbed().setTitle(`Bunu Yapamazsın !`).setDescription(`Bu Sunucuda Reklam Koruması Var Dostum !`)).then(msg => msg.delete({ timeout: 5000}));
-   
- 
-  msg.delete(3000);                              
- 
-            }              
-          } catch(err) {
-            console.log(err);
-          }
-        }
-    });
-
-//-----------------------------------------------REKLAM-ENGELLEME---------------------------------------------------------\\
-
-
-
-
-
-
-//-----------------------------------------------KÜFÜR-ENGELLEME---------------------------------------------------------\\
-
-client.on("message", async msg => {
-  
-  
- const i = await db.fetch(`kufur_${msg.guild.id}`)
-    if (i == "acik") {
-        const kufur = ["oç", "amk", "ananı sikiyim", "ananıskm", "piç", "amk", "amsk", "sikim", "sikiyim", "orospu çocuğu", "piç kurusu", "kahpe", "orospu", "mal", "sik", "yarrak", "am", "amcık", "amık", "yarram", "sikimi ye", "mk", "mq", "aq", "ak", "amq",];
-        if (kufur.some(word => msg.content.includes(word))) {
-          try {
-            if (!msg.member.hasPermission("ADMINISTRATOR")) {
-                  msg.delete();
-                          
-                      return msg.channel.send(new Discord.MessageEmbed().setTitle(`Bunu Yapamazsın !`).setDescription(`Bu Sunucuda Küfür Koruması Var Dostum !`)).then(msg => msg.delete({ timeout: 5000}));
-            }              
-          } catch(err) {
-            console.log(err);
-          }
-        }
-    }
-    if (!i) return;
-});
-
-//-----------------------------------------------KÜFÜR-ENGELLEME---------------------------------------------------------\\
-
-
 client.on('guildMemberAdd', async(member) => {
 let rol = member.guild.roles.cache.find(r => r.name === "CEZALI ROLÜNÜN ADI NEYSE YAZ");
 let cezalımı = db.fetch(`cezali_${member.guild.id + member.id}`)
@@ -230,6 +177,7 @@ db.delete(`cezali_${member.guild.id + member.id}`)
 }
 })
 
+//--------------------------------------------------------------------------------------\\
 
 client.on('guildMemberAdd', async(member) => {
 let mute = member.guild.roles.cache.find(r => r.name === "MUTELİ ROLÜNÜN ADI NEYSE YAZ");
@@ -248,6 +196,8 @@ db.delete(`muteli_${member.guild.id + member.id}`)
   }, ms(süre));
 }
 })
+
+//--------------------------------------------------------------------------------------\\
 
 
 client.on('guildMemberAdd', async member => {
@@ -273,3 +223,43 @@ data.set(`${member.guild.id}.jail.${kişi.id}.roles.${r.id}`, r.id )})
   
   
 })
+
+//--------------------------------------------------------------------------------------\\
+
+//
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "-tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u!tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u.tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "u-tag") 
+    return message.channel.send(`TAG`)
+});
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == ".tag") 
+    return message.channel.send(`TAG`)
+});
+
+//
+
+
+
+
+  //

@@ -12,7 +12,16 @@ exports.run = async (client, message, args) => {
   if(!kişi) return message.channel.send(`Mutesini Açmam Gereken Kişiyi Belirt.`)
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\  
 
-
+        let mutezaman = args[0]
+          .replace("sn", "s")
+          .replace("dk", "m")
+          .replace("sa", "h")
+          .replace("gün", "d");
+          let vakit = mutezaman
+            .replace("m", " dakika")
+            .replace("s", " saniye")
+            .replace("h", " saat")
+            .replace("d", " d");
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\    
   
@@ -22,7 +31,10 @@ exports.run = async (client, message, args) => {
   
   db.add(`muteSorgu.${kişi.id}`, -1)
   
-  let mutesorgu = db.fetch(`muteSorgu.${kişi.id}`);  
+  let mutesorgu = db.fetch(`muteSorgu.${kişi.id}`); 
+  
+  db.delete(`muteli_${message.guild.id + kişi.id}`, 'muteli')
+db.delete(`süre_${message.mentions.users.first().id + message.guild.id}`, mutezaman)
   
           
 
@@ -39,8 +51,6 @@ exports.run = async (client, message, args) => {
 • Kanal: \`${message.channel.name}\``)
 client.channels.cache.get(ayarlar.MuteKanal).send(sadxstriga)
   
-  db.set(`muteli_${message.guild.id + kişi.id}`, 'muteli')
-db.set(`süre_${message.mentions.users.first().id + message.guild.id}`, mutezaman)
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\
   
 

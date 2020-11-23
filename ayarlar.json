@@ -6,21 +6,21 @@
   
   
   
-  "BanYetkilisi": "779395409687871530",
-  "BanKanal": "779395206298468414",
+  "BanYetkilisi": "ROL ID",
+  "BanKanal": "KANAL ID",
     
   
   
   
-  "JailYetkilisi": "779395409109712936", 
-  "JailCezalıRol": "779395413047246879", 
-  "JailKanal": "779395206298468414",
+  "JailYetkilisi": "ROL ID", 
+  "JailCezalıRol": "ROL ID", 
+  "JailKanal": "KANAL ID",
   
   
   
   
-  "MuteYetkilisi": "779395409327816714",
-  "MuteliRol": "779395414742925342",
-  "MuteKanal": "779395206298468414"
+  "MuteYetkilisi": "ROL ID",
+  "MuteliRol": "ROL ID",
+  "MuteKanal": "KANAL ID"
   
 }

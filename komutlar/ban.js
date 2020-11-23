@@ -23,7 +23,7 @@ if(!member) return message.channel.send('Belirtilen Kullanıcı Sunucuda Bulunma
 if(member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('Etiketlenen Kullanıcı Sizden Üst/Aynı Pozisyonda.')
   member.ban({days: 7, reason: reason})
 
-const embed = new Discord.MessageEmbed()
+         const embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL ({ dynamic : true }))
         .setColor(`GREEN`)
         .setDescription(`<@${member.id}> (\`${member.id}\`) Adlı Kullanıcı <@${message.author.id}> Tarafından Sunucudan Yasaklandı.
@@ -32,7 +32,7 @@ const embed = new Discord.MessageEmbed()
       • Sebebi: \`${reason}\`
       • Kanal: \`${message.channel.name}\`
         `)
-        client.channels.cache.get(ayarlar.BanKanal).send(embed)///LOG KANAL İD YAZMALISIN
+        client.channels.cache.get(ayarlar.BanKanal).send(embed)
         message.react('✅')
 
 };
