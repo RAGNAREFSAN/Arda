@@ -29,6 +29,7 @@ if(!message.member.roles.cache.has(ayarlar.JailYetkilisi) && !message.member.has
             .replace("d", " d");
         
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\
+
   db.set(`cezali_${message.guild.id + kişi.id}`, 'cezali')
 
   db.set(`süreJail_${message.mentions.users.first().id + message.guild.id}`, zaman1)
