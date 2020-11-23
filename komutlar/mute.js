@@ -88,7 +88,7 @@ db.set(`süre_${message.mentions.users.first().id + message.guild.id}`, mutezama
 
           setTimeout(async function() {
             muted.roles.remove(
-              ayarlar.MuteliRol.id,
+              ayarlar.MuteliRol,
               client.channels.cache.get(ayarlar.MuteKanal).send(
               new Discord.MessageEmbed()
               .setColor('#494459')
