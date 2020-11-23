@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
   
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\    
   
- if(!message.member.roles.cache.get(ayarlar.MuteYetkilisi) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('Bu Komutu Kullanmak İçin Yetkiniz Bulunmamakta.')
+ if(!message.member.roles.cache.get(ayarlar.MuteYetkilisi) && !message.member.hasPermission('741973537669251163')) return message.channel.send('Bu Komutu Kullanmak İçin Yetkiniz Bulunmamakta.')
 
   let kişi = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
   if(!kişi) return message.channel.send(`Mute Atmam Gereken Kişiyi Belirt`)
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
   
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\    
 
-    let muted =message.mentions.members.first() || message.guild.members.cache.find(c => c.id === args[0]);
+    let muted = message.mentions.members.first() || message.guild.members.cache.find(c => c.id === args[0]);
     if (!muted) { message.channel.send(`Mute Atmam Gereken Kişiyi Belirt.`);
    } else {
       if (muted.roles.highest.position >= message.member.roles.highest.position) 
