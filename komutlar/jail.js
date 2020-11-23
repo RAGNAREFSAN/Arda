@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\  
           
-if(!message.member.roles.cache(ayarlar.JailYetkilisi) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('Bu Komutu Kullanmak İçin Yetkiniz Bulunmamakta.')
+if(!message.member.roles.cache.has(ayarlar.JailYetkilisi) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('Bu Komutu Kullanmak İçin Yetkiniz Bulunmamakta.')
   
   const kişi = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
   if(!kişi) return message.channel.send('Jaila Atmam Gereken Kişiyi Belirt')
