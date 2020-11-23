@@ -1,24 +1,41 @@
 const Striga = require('discord.js')
 const datab = require('quick.db')
 
-exports.run = async (message, args) => {
+exports.run = async (client, message, args) => {
   
-  if(!['ROL ID', 'ROL ID',].some(role => message.member.roles.cache.get(role)) && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`Bu Komutu Kullanmak İçin Yeterli Yetkiye Sahip Değilsin.`)
-  
-  const uyarırol = message.guild.roles.cache.find(r => r.id === "")
+ if(!message.member.roles.cache.some(r => ["ROL ID"].includes(r.id)));
+   
+  const uyarırol = message.guild.roles.cache.find(r => r.id === "ROL ID")
   
   let kullanıcı = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]));
   if(!kullanıcı) return message.channel.send(`Kime Uyarı Vermek İstiyorsun ?`)
   
   datab.add(`uyari.${kullanıcı.id}`, 1)
+  let toplamuyari = datab.fetch(`uyari.${kullanıcı.id}`)
   
   let sebep = args[1]
-  if(!sebep) 
+  if(!sebep) return message.channel.send(`Bir Sebep Belirt.`)
+  
+  kullanıcı.roles.add(uyarırol)
   
   const uyarımesaj = new Striga.MessageEmbed()
   .setAuthor('Uyarı')
-  .setDescription(`${kullanıcı}`)
+  .setDescription(`${kullanıcı} Adlı Kullanıcı \`${sebep}\` Sebebiyle Uyarıldı.`)
+  .setFooter(`Bu Kullanıcı ${toplamuyari} Kez Uyarıldı`)
+  .setColor(`GREEN`)
+  message.channel.send(uyarımesaj)
   
-  
+  kullanıcı.send(`**${message.guild.name}** Sunucusunda \`${sebep}\` Sebebiyle Uyarıldın. \n Toplam \`${toplamuyari}\` Kez Uyarılmışsın.`)
   
 }
+
+exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: ["uyarı"],
+  permLevel: 0,
+}
+
+exports.help = {
+  name: "uyar"
+};

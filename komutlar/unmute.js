@@ -15,7 +15,16 @@ exports.run = async (client, message, args) => {
 
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\    
-
+  
+  db.add(`cezaPuan.${kişi.id}`, -5)
+  
+  let cezapuan = db.fetch(`cezaPuan.${kişi.id}`);
+  
+  db.add(`muteSorgu.${kişi.id}`, -1)
+  
+  let mutesorgu = db.fetch(`muteSorgu.${kişi.id}`);  
+  
+          
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\          
             kişi.roles.remove(ayarlar.MuteliRol);
@@ -29,6 +38,9 @@ exports.run = async (client, message, args) => {
 • Mutesi Kalkan: <@${kişi.id}> | \`${kişi.id}\`
 • Kanal: \`${message.channel.name}\``)
 client.channels.cache.get(ayarlar.MuteKanal).send(sadxstriga)
+  
+  db.set(`muteli_${message.guild.id + kişi.id}`, 'muteli')
+db.set(`süre_${message.mentions.users.first().id + message.guild.id}`, mutezaman)
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◆◆◆━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\
   
 
