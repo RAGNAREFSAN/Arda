@@ -38,6 +38,7 @@ ${member} Adlı Kullanıcı <@${message.author.id}> Tarafından Kayıt Edildi.
 Kullanıcının Adı \`${tag} ${isim} | ${yas}\` Olarak Güncellendi ${kayıtlı} Rolü Verildi
 `)
 .setColor('BLUE')
+.setFooter(`Toplam Kayıt ${toplami} Sayısına Ulaştın`)
 message.channel.send(embed)
 
   
