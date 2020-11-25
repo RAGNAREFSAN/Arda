@@ -1,26 +1,6 @@
 {
   "prefix" : "PREFIX",
-  "sahip" : "ID",
-  "token" : "TOKEN",
-    
-  
-  
-  
-  "BanYetkilisi": "ROL ID",
-  "BanKanal": "KANAL ID",
-    
-  
-  
-  
-  "JailYetkilisi": "ROL ID", 
-  "JailCezalıRol": "ROL ID", 
-  "JailKanal": "KANAL ID",
-  
-  
-  
-  
-  "MuteYetkilisi": "ROL ID",
-  "MuteliRol": "ROL ID",
-  "MuteKanal": "KANAL ID"
+  "sahip" : "164843533201702922",
+  "token" : "NzQ1MjMzNjgyNjEyMzU1MTky.Xzuy8w.qPAzMc_6TIqJ_uR3RnIkETp44yY"
   
 }
