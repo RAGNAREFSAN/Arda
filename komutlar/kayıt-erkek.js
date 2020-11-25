@@ -3,11 +3,13 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
   
-const kayıtlı = message.guild.roles.cache.find(r => r.id === '')
-const kayıtsız = message.guild.roles.cache.find(r => r.id === '')
+if(!["781170112718831636"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) return message.reply(`<a:halaycekenstriga:773511924544962561> **? YETKİN YOK ZA KULLANAMAZSIN ZA ¿** <a:halaycekenstriga:773511924544962561>`)
+  
+  
+const kayıtlı = message.guild.roles.cache.find(r => r.id === '781170111691358219')
+const kayıtsız = message.guild.roles.cache.find(r => r.id === '781170112186155028')
 
-
-const member = message.guild.member(message.mentions.member.first() ||  message.guild.member.cache.get(args[0]))
+const member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
 if(!member) return message.channel.send('Bir Kullanıcı Belirt.')
 if(!member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('Etiketlenen kullanıcı ile Üst/Aynı pozisyonda bulunuyorsunuz.')
 const x = message.guild.member(member)
@@ -31,11 +33,12 @@ x.roles.remove(kayıtsız)
 
   
 const embed = new dc.MessageEmbed()
-.setDescripiton(`
+.setDescription(`
 ${member} Adlı Kullanıcı <@${message.author.id}> Tarafından Kayıt Edildi.
 Kullanıcının Adı \`${tag} ${isim} | ${yas}\` Olarak Güncellendi ${kayıtlı} Rolü Verildi
 `)
 .setColor('BLUE')
+message.channel.send(embed)
 
   
 }
