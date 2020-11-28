@@ -34,8 +34,8 @@ x.roles.remove(kayıtsız)
   
 const embed = new dc.MessageEmbed()
 .setDescription(`
-${member} Adlı Kullanıcı <@${message.author.id}> Tarafından Kayıt Edildi.
-Kullanıcının Adı \`${tag} ${isim} | ${yas}\` Olarak Güncellendi ${kayıtlı} Rolü Verildi
+• ${member} Adlı Kullanıcı <@${message.author.id}> Tarafından Kayıt Edildi.
+• Kullanıcının Adı \`${tag} ${isim} | ${yas}\` Olarak Güncellendi ${kayıtlı} Rolü Verildi
 `)
 .setColor('BLUE')
 .setFooter(`Toplam Kayıt ${toplami} Sayısına Ulaştın`)
