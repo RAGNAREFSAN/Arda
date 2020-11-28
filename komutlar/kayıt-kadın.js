@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
   
-if(!["781170112718831636"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) return message.reply(`<a:halaycekenstriga:773511924544962561> **? YETKİN YOK ZA KULLANAMAZSIN ZA ¿** <a:halaycekenstriga:773511924544962561>`)
+if(!["REGİSTER YAPAN ROL İDSİ", "EXTRA ROL İD GİREBİLRSN"].some(role => message.member.roles.cache.get(role)) && (!message.member.hasPermission("ADMINISTRATOR"))) return message.reply(`Bu Komutu Kullanabilmek İçin Yetkin Bulunmuyor.`)
   
   
 const kayıtlı = message.guild.roles.cache.find(r => r.id === '781170110920130583')

@@ -116,147 +116,126 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-//--------------------------------------------------------------------------------------\\
+//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
 
-
-
-
-
-//--------------------------------------------------------------------------------------\\
-
-
-
-client.on("message" , async msg => {
+client.on("guildMemberAdd", member => {
+    require("moment-duration-format")
+      var üyesayısı = member.guild.members.cache.size.toString().replace(/ /g, "    ")
+      var üs = üyesayısı.match(/([0-9])/g)
+      üyesayısı = üyesayısı.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+      if(üs) {
+        üyesayısı = üyesayısı.replace(/([0-9])/g, d => {
+          return {
+            '0': `SIFIR EMOJİ`,
+            '1': `BİR EMOJİ`,
+            '2': `İKİ EMOJİ`,
+            '3': `ÜÇ EMOJİ`,
+            '4': `DÖRT EMOJİ`,
+            '5': `BEŞ EMOJİ`,
+            '6': `ALTI EMOJİ`,
+            '7': `YEDİ EMOJİ`,
+            '8': `SEKİZ EMOJİ`,
+            '9': `DOKUZ EMOJİ`}[d];
+          })
+        }
+    const kanal = member.guild.channels.cache.find(r => r.id === "REGISTER KANAL IDSİ");
+    let user = client.users.cache.get(member.id);
+    require("moment-duration-format");
+      const kurulus = new Date().getTime() - user.createdAt.getTime();  
+   
+    var kontrol;
+  if (kurulus < 1296000000) kontrol = 'Hesap Durumu: Güvenilir Değil.'
+  if (kurulus > 1296000000) kontrol = 'Hesap Durumu: Güvenilir Gözüküyor.'
+    moment.locale("tr");
+    const embed = new Discord.MessageEmbed()
+    .setAuthor(member.guild.name, member.guild.iconURL({ dynamic: true }))
+    .setThumbnail(member.user.avatarURL({ dynamic: true }))
+    .setColor('0xEFF3E6')
+    .setDescription("\n**<@"+member.user.id+">  Aramıza Katıldı. \n\nOdalardan Birisinde Teyit Vererek Kayıt Olabilirsin. \n\n<@&REGISTER ROL ID> Rolündekiler Seninle İlgilenecektir. \n\nSeninle Birlikte "+üyesayısı+" Kişiyiz. \n\nHesabın: `" + moment(member.user.createdAt).format("\`YYYY DD MMMM dddd\`") +  "` Tarihinde Oluşturulmuş. \n\n"+kontrol+" \n\nTagımızı Alarak ` STRIGA CODE ` Bize Destek Olabilirsin.**")
+    .setFooter(`Striga #Code`)
+    kanal.send(`<@&REGISTER ROL ID>`)
+    kanal.send(embed)
+});
   
-  if(!msg.guild) return;
-  if(msg.content.startsWith(ayarlar.prefix+"afk")) return; 
-  
-  let afk = msg.mentions.users.first()
-  
-  const kisi = db.fetch(`afkid_${msg.author.id}_${msg.guild.id}`)
-  
-  const isim = db.fetch(`afkAd_${msg.author.id}_${msg.guild.id}`)
- if(afk){
-   const sebep = db.fetch(`afkSebep_${afk.id}_${msg.guild.id}`)
-   const kisi3 = db.fetch(`afkid_${afk.id}_${msg.guild.id}`)
-   if(msg.content.includes(kisi3)){
 
-       msg.reply(`Etiketlediğiniz Kişi Afk \nSebep : ${sebep}`)
-   }
- }
-  if(msg.author.id === kisi){
+//-----------------------HOŞ-GELDİN-MESAJI----------------------\\     STG
 
-       msg.reply(`Afk'lıktan Çıktınız`)
-   db.delete(`afkSebep_${msg.author.id}_${msg.guild.id}`)
-   db.delete(`afkid_${msg.author.id}_${msg.guild.id}`)
-   db.delete(`afkAd_${msg.author.id}_${msg.guild.id}`)
-    msg.member.setNickname(isim)
-    
-  }
+
+
+//------------------------------------------------------------------------------------------------------------------------------------\\
+
+client.on("guildMemberAdd", member => {
+    var moment = require("moment")
+    require("moment-duration-format")
+    moment.locale("tr")
+     var {Permissions} = require('discord.js');
+     var x = moment(member.user.createdAt).add(7, 'days').fromNow()
+     var user = member.user
+     x = x.replace("birkaç saniye önce", " ")
+     if(!x.includes("önce") || x.includes("sonra") ||x == " ") {
+    const kytsz = member.guild.roles.cache.find(r => r.id === "KAYITSIZ ROL ID") 
+     var rol = member.guild.roles.cache.get("ŞÜPHELİ ROL ID") // ŞÜPHELİ HESAP ROLÜNÜN İDSİNİ GİRİN
+     var kayıtsız = member.guild.roles.cache.get(kytsz) // UNREGİSTER ROLÜNÜN İDSİNİ GİRİN
+     member.roles.add(rol)
+     member.roles.remove(kytsz)
+
+  member.user.send('Selam Dostum Ne Yazık ki Sana Kötü Bir Haberim Var Hesabın 1 Hafta Gibi Kısa Bir Sürede Açıldığı İçin Fake Hesap Katagorisine Giriyorsun Lütfen Bir Yetkiliyle İletişime Geç Onlar Sana Yardımcı Olucaktır.')
+  setTimeout(() => {
   
+  }, 1000)
+  
+  
+     }
+          else {
+  
+          }
+      });
+
+//------------------------------------------------------------------------------------------------------------------------------------\\
+
+
+//-----------------------TAG-ROL----------------------\\     STG
+
+client.on("userUpdate", async (stg, yeni) => {
+  var sunucu = client.guilds.cache.get('SUNUCU ID'); // Buraya Sunucu ID
+  var uye = sunucu.members.cache.get(yeni.id);
+  var tag = "TAG"; // Buraya Ekip Tag
+  var tagrol = "TAG ROL ID"; // Buraya Ekip Rolünün ID
+  var logKanali = "TAG LOG KANAL ID"; // Loglanacağı Kanalın ID
+
+  if (!sunucu.members.cache.has(yeni.id) || yeni.bot || stg.username === yeni.username) return;
+  
+  if ((yeni.username).includes(tag) && !uye.roles.cache.has(tagrol)) {
+    try {
+      await uye.roles.add(tagrol);
+      await uye.send(`Tagımızı aldığın için teşekkürler! Aramıza hoş geldin.`);
+      await client.channels.cache.get(logKanali).send(new Discord.MessageEmbed().setColor('GREEN').setDescription(`${yeni} adlı üye tagımızı alarak aramıza katıldı!`));
+    } catch (err) { console.error(err) };
+  };
+  
+  if (!(yeni.username).includes(tag) && uye.roles.cache.has(tagrol)) {
+    try {
+      await uye.roles.remove(uye.roles.cache.filter(rol => rol.position >= sunucu.roles.cache.get(tagrol).position));
+      await uye.send(`Tagımızı bıraktığın için ekip rolü ve yetkili rollerin alındı! Tagımızı tekrar alıp aramıza katılmak istersen;\nTagımız: **${tag}**`);
+      await client.channels.cache.get(logKanali).send(new Discord.MessageEmbed().setColor('RED').setDescription(`${yeni} adlı üye tagımızı bırakarak aramızdan ayrıldı!`));
+    } catch(err) { console.error(err) };
+  };
 });
 
+//----------------------TAG-KONTROL----------------------\\     
 
-//--------------------------------------------------------------------------------------\\
-
-client.on('guildMemberAdd', async(member) => {
-let rol = member.guild.roles.cache.find(r => r.name === "CEZALI ROLÜNÜN ADI NEYSE YAZ");
-let cezalımı = db.fetch(`cezali_${member.guild.id + member.id}`)
-let sürejail = db.fetch(`süreJail_${member.id + member.guild.id}`)
-if (!cezalımı) return;
-if (cezalımı == "cezali") {
-member.roles.add(ayarlar.JailCezalıRol)
- 
-member.send("Cezalıyken Sunucudan Çıktığın için Yeniden Cezalı Rolü Verildi!")
- setTimeout(function(){
-    // msg.channel.send(`<@${user.id}> Muten açıldı.`)
-db.delete(`cezali_${member.guild.id + member.id}`)
-    member.send(`<@${member.id}> Cezan açıldı.`)
-    member.roles.remove(ayarlar.JailCezalıRol);
-  }, ms(sürejail));
+client.on("guildMemberAdd", member => {
+  let sunucuid = "SUNUCU ID"; //Buraya sunucunuzun IDsini yazın
+  let tag = "TAG"; //Buraya tagınızı yazın
+  let rol = "TAG ROL ID"; //Buraya tag alındığı zaman verilecek rolün IDsini yazın
+if(member.user.username.includes(tag)){
+member.roles.add(rol)
+  const tagalma = new Discord.MessageEmbed()
+      .setColor("GREEN")
+      .setDescription(`<@${member.id}> adlı kişi sunucumuza taglı şekilde katıldı, o doğuştan beri bizden !`)
+      .setTimestamp()
+     client.channels.cache.get('TAG LOG KANAL ID').send(tagalma)
 }
 })
 
-//--------------------------------------------------------------------------------------\\
-
-client.on('guildMemberAdd', async(member) => {
-let mute = member.guild.roles.cache.find(r => r.name === "MUTELİ ROLÜNÜN ADI NEYSE YAZ");
-let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
-let süre = db.fetch(`süre_${member.id + member.guild.id}`)
-if (!mutelimi) return;
-if (mutelimi == "muteli") {
-member.roles.add(ayarlar.MuteliRol)
- 
-member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
- setTimeout(function(){
-    // msg.channel.send(`<@${user.id}> Muten açıldı.`)
-db.delete(`muteli_${member.guild.id + member.id}`)
-    member.send(`<@${member.id}> Muten açıldı.`)
-    member.roles.remove(ayarlar.MuteliRol);
-  }, ms(süre));
-}
-})
-
-//--------------------------------------------------------------------------------------\\
-
-
-client.on('guildMemberAdd', async member => {
-const data = require('quick.db')
-const asd = data.fetch(`${member.guild.id}.jail.${member.id}`)
-if(asd) {
-let data2 = await data.fetch(`jailrol_${member.guild.id}`)
-let rol = member.guild.roles.cache.get(data2)
-if(!rol) return;
-let kişi = member.guild.members.cache.get(member.id)
-kişi.roles.add(rol.id);
-kişi.roles.cache.forEach(r => {
-kişi.roles.remove(r.id)
-data.set(`${member.guild.id}.jail.${kişi.id}.roles.${r.id}`, r.id )})
-    data.set(`${member.guild.id}.jail.${kişi.id}`)
-  const wasted = new Discord.MessageEmbed()
-  .setAuthor(member.user.tag, member.user.avatarURL({ dynamic : true }))
-  .setColor(`#f3c7e1`)
-  .setDescription(`Jaildan Kaçamazsın!`)
-  .setTimestamp()
-    member.send(wasted)
-} 
-  
-  
-})
-
-//--------------------------------------------------------------------------------------\\
-
-//
-client.on("message", message => {
-    if(message.content.toLowerCase() == "!tag") 
-    return message.channel.send(`TAG`)
-});
-
-client.on("message", message => {
-    if(message.content.toLowerCase() == "-tag") 
-    return message.channel.send(`TAG`)
-});
-
-client.on("message", message => {
-    if(message.content.toLowerCase() == "u!tag") 
-    return message.channel.send(`TAG`)
-});
-
-client.on("message", message => {
-    if(message.content.toLowerCase() == "u.tag") 
-    return message.channel.send(`TAG`)
-});
-
-client.on("message", message => {
-    if(message.content.toLowerCase() == "u-tag") 
-    return message.channel.send(`TAG`)
-});
-
-client.on("message", message => {
-    if(message.content.toLowerCase() == ".tag") 
-    return message.channel.send(`TAG`)
-});
-
-//
-
-
+//-----------------------TAG-KONTROL----------------------\\     
