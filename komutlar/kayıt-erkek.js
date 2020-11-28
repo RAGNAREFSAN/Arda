@@ -19,9 +19,9 @@ db.add(`yetkili.${message.author.id}.erkek`,1 )
 db.add(`yetkili.${message.author.id}.toplam`, 1)  
 let toplami = db.fetch(`yetkili.${message.author.id}.toplam`)  
 
-let tag = "TAG"
+let tag = "STG"
 let isim = args[1]
-let yas = Number(args[2])
+let yas = args[2]
 if(!isim) return message.channel.send(`Bir İsim Belirt.`)
 if(!yas) return message.channel.send(`Bir Yaş Belirt.`)
   

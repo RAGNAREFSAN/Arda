@@ -9,7 +9,6 @@ if(!["781170112718831636"].some(role => message.member.roles.cache.get(role)) &&
 const kayıtlı = message.guild.roles.cache.find(r => r.id === '781170110920130583')
 const kayıtsız = message.guild.roles.cache.find(r => r.id === '781170112186155028')
 
-
 const member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
 if(!member) return message.channel.send('Bir Kullanıcı Belirt.')
 if(!member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('Etiketlenen kullanıcı ile Üst/Aynı pozisyonda bulunuyorsunuz.')
